@@ -1,0 +1,167 @@
+<app-header></app-header>
+<ng-container *ngIf="view === 'all'" >
+    <div  class="container mt-2">
+        <div class="row d-flex justify-content-center">
+            <div class="col-8">
+                <div class="buscador">
+                        <div class="input-group mb-4 border rounded-pill p-1">
+                            <div class="input-group-prepend border-0x pt-1 px-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                </svg>
+                            </div>
+                            <input [(ngModel)]="busqueda" type="search" placeholder="Buscar actividad" aria-describedby="button-addon4" class="form-control bg-none border-0">
+                        </div>
+                    
+                    
+                </div>
+            </div>
+            <div class="col-2">
+                <button class="btn btn-primary rounded rounded-pill" (click)="toCreate()">Crear</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <nz-table #actividadTable [nzData]="actividadesFromDb" [nzFrontPagination]="true"
+                [nzShowPagination]="true">
+                    <thead>
+                        <tr>
+                            <th>Actividad</th>
+                            <th>Descripción</th>
+                            <th>Horas</th>
+                            <th>Inicio</th>
+                            <th>Fin</th>
+                            <th>Alcance</th>
+                            <th>Centro</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of actividadTable.data">
+                            <td>{{ data.nombre }}</td>
+                            <td>{{ data.descripcion }}</td>
+                            <td>{{ data.cant_horas }}</td>
+                            <td>{{ data.fecha_inicio }}</td>
+                            <td>{{ data.fecha_fin }}</td>
+                            <td>{{ data.alcance.alcance }}</td>
+                            <td>{{ data.centro.centro }}</td>
+                            <td> 
+                                <nz-divider nzType="vertical"></nz-divider>
+                                <a class="text-red">editar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </nz-table>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="view === 'new'">
+    <div class="container mt-2">
+        <div class="row d-flex justify-content-center ">
+            <div class="col-11 ">
+                <div class="createForm">
+                    <form #createActividad="ngForm" class="row d-flex justify-content-center">
+                        <div class="row pt-3 pb-4">
+                            <div class="col-12 text-center">
+                                <span class="fs-5">Crear una actividad</span>
+                            </div>
+                        </div>
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-8">
+                                <div class="mb-3">
+                                    <label for="nombre" class="form-label">Nombre de la actividad:</label>
+                                    <input type="text" class="form-control" id="nombre" placeholder="Ejemplo:Dia del niño">
+                                  </div>
+                            </div>
+                            <div class="col-4">
+                                <label class="form-label" for="cant_horas">Horas</label>
+                                <input type="number" id="cant_horas" class="form-control" />
+                        </div>
+                        </div>
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <label for="descripcion" class="form-label">Descripción</label>
+                                    <textarea class="form-control" id="descripcion" rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                                    <div class="col-md-6 col-sm-12 mt-2">
+                                        <label for="fecha_inicio">Fecha Inicio</label>
+                                        <nz-date-picker
+                                            nzShowTime
+                                            nzFormat="yyyy-MM-dd HH:mm:ss"
+                                            (nzOnOk)="onOkInicio($event)"
+                                            id="fecha_inicio">
+                                        </nz-date-picker>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 mt-2">
+                                        <label for="fecha_fin"> Fecha Fin</label>
+                                        <nz-date-picker
+                                            nzShowTime
+                                            nzFormat="yyyy-MM-dd HH:mm:ss"
+                                            (nzOnOk)="onOkFin($event)"
+                                            id="fecha_fin">
+                                        </nz-date-picker>
+                                        
+                                    </div>
+                                    
+                            
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" [(ngModel)]="uploadImageChecked" name="fileUpload">
+                                    <label class="form-check-label" for="flexCheckDefault">No subir imagen</label>
+                                </div>
+                            </div>
+                            <div class="col-12" *ngIf="!uploadImageChecked">
+                                <div class="mb-3">
+                                    <input class="form-control" type="file" id="formFile">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <div class="col-6">
+                                <label for="alcance">Alcance</label>
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected>sd</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                  </select>
+                            </div>
+                            <div class="col-6">
+                                <label for="alcance">Centro</label>
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected>sd</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                                
+                            </div>
+                            
+                    
+                </div>
+                        <div class="row d-flex justify-content-center">
+                            
+                            <div class="col-8">
+                                <button type="submit" class="btn btn-primary">Crear Actividad</button> 
+                            </div>
+                            <div class="col-4">
+                                <button class="btn btn-secondary" (click)="toAll()">Cancelar</button>
+                            </div>
+                            
+                        </div>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>

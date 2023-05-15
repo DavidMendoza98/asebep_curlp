@@ -1,0 +1,60 @@
+<app-header></app-header>
+<!-- 
+<p class="">Feed de {{estudiante.nombres | slice:0:estudiante.nombres.indexOf(' ')}} {{estudiante.apellidos | slice:0:estudiante.apellidos.indexOf(' ')}}</p> -->
+
+<div class="contenedor">
+    <div class="buscador">
+        <div class="input-group mb-4 border rounded-pill p-1">
+            <div class="input-group-prepend border-0x pt-1 px-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg>
+            </div>
+            <input [(ngModel)]="busqueda" type="search" placeholder="Buscar actividad" aria-describedby="button-addon4" class="form-control bg-none border-0">
+          </div>
+    </div>
+    <div class="actividades">
+        <!-- <ng-container *ngFor="let x of actividadesFromDb.slice(0, 20) | actividadFilter:busqueda">
+            <div class="actividadItem"> 
+                <div class="itemTitulo fs-3">
+                   {{x.nombre}}
+                </div> 
+                <div class="itemHoras">
+                    <span class="fs-5">Cantidad horas: {{x.cant_horas}}</span>
+                </div> 
+                <div class="itemImg">
+                    <img src="{{x.img_link}}" alt="logo_asebep">
+                </div>
+                <div class="itemDescripcion">
+                    <p>{{x.descripcion}}</p>
+                </div> 
+                <div class="itemBoton"> 
+                    <button type="button" class="btn btn-warning" (click)="toActividadDetail(x.id)">ver más</button> </div> 
+                </div>
+        </ng-container> -->
+        <ng-container *ngFor="let x of actividadesFromDb.slice(0, 20) | actividadFilter:busqueda">
+            <nz-card nzHoverable style="width:300px; height: 350px; border: 1px solid #0691f5; border-radius: 10px; overflow: hidden;" [nzCover]="coverTemplate">
+                <nz-card-meta nzTitle="{{x.nombre}}" nzDescription="{{x.descripcion}}"></nz-card-meta>
+                
+                <button type="button" class="btn btn-warning mt-2" (click)="toActividadDetail(x.id)">ver más</button> 
+                
+            </nz-card>
+            <ng-template #coverTemplate>
+                <div  class="d-flex justify-content-center itemImg">
+                    <img alt="example" src="{{x.img_link}}"x/>
+                </div>
+            </ng-template>
+        </ng-container>
+    </div>
+    <!-- <div class="paginacion">
+        <nav>
+            <ul class="pagination pagination">
+              <li class="page-item active" aria-current="page">
+                <span class="page-link">1</span>
+              </li>
+              <li class="page-item"><a class="page-link">2</a></li>
+              <li class="page-item"><a class="page-link">3</a></li>
+            </ul>
+          </nav>
+    </div> -->
+</div>

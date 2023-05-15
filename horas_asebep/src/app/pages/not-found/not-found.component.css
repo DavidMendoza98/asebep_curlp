@@ -1,0 +1,11 @@
+.img, .btn{
+    display: flex;
+    justify-content: center;
+}
+
+.btn button{
+    width: 200px;
+    height: 40px;
+    background-color: orange;
+    border-radius: 12px;
+}

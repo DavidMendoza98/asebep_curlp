@@ -1,0 +1,66 @@
+<app-header></app-header>
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center fs-3">Abril - 2023</div>
+    </div>
+    <div class="row d-flex justify-content-center  ">
+        <div class="col-md-4 col-sm-8 d-flex justify-content-center">
+            <div class="row horas shadow mt-1 p-0" [ngStyle]="{'background-color': colorHours}">
+                <p class="col-12 ">{{hours}}</p>
+                <span class="col-12">Horas</span>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3 p-2">
+        <table class="table table-striped ">
+            <thead>
+              <tr>
+                <th scope="col " class="text-center">Actividad</th>
+                <th scope="col " class="text-center">Horas</th>
+                <th scope="col " class="text-center">Acción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="text-center"> 
+                <th >Dia del niño</th>
+                <td >10</td>
+                <td ><a [routerLink]="['actividad_detaill']" >ver actividad</a></td>
+              </tr>
+              <tr class="text-center">
+                <th>Aniversario</th>
+                <td>5</td>
+                <td><a [routerLink]="['actividad_detail']">ver actividad</a></td>
+              </tr>
+              <tr class="text-center">
+                <th>Actividad Navidad</th>
+                <td>5</td>
+                <td><a [routerLink]="['actividad_detail']">ver actividad</a></td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+    <div class="row d-flex justify-content-center ">
+        <div class="col-12 text-center">Puede seleccionar otra fecha a revisar</div>
+        <div class="col-md-4 col-sm-6">
+            <label for="mes">Mes</label>
+            <select class="form-select" aria-label="Default select example" id="mes">
+                <option selected>Abril</option>
+                <option value="1">Mayo</option>
+                <option value="2">Junio</option>
+                <option value="3">Julio</option>
+              </select>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <label for="mes">Año</label>
+            <select class="form-select" aria-label="Default select example" id="mes">
+                <option selected>2023</option>
+                <option value="1">2024</option>
+                <option value="2">2025</option>
+                <option value="3">2026</option>
+              </select>
+        </div>
+        <div class="col-12 mt-2 d-flex justify-content-center">
+            <button class="btn btn-primary">Revisar</button>
+        </div>
+    </div>
+</div>

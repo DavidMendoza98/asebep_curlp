@@ -1,0 +1,21 @@
+.horas{
+    width: 80%;
+    min-height: 150px;
+    background-color: #00a62a;
+    color: white;
+    border-radius: 10px;
+}
+.horas p{
+    font-size: 5em;
+    margin-bottom: 10px;
+    height: 100px;
+    padding: 0;
+    text-align: center;
+}
+.horas span{
+    font-size: 2em;
+    text-align: center;
+}
+.my-table tbody tr:nth-of-type(odd) {
+    background-color: #fff;
+  }

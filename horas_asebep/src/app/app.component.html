@@ -1,0 +1,38 @@
+<router-outlet></router-outlet>
+<!-- <div class="parent"> 
+  <div class="logos">
+    <img src="https://dircom.unah.edu.hn/dmsdocument/7515-unah-curlp-horz-azul-png" alt="logo_unah">
+    <img src="https://asebepunahcu.files.wordpress.com/2017/09/cropped-logo-asebep.png?w=200" alt="logo_asebep">
+  </div> 
+  <div class="titulo">
+    <h1>Control de horas becados UNAH-CURLP</h1>
+    <p>Por favor escriba su número de cuenta y presione el botón para buscar sus datos</p>
+  </div> 
+  <div class="buscador">
+    <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
+      <input type="number" [(ngModel)]="numCuenta" ngPattern="/^[0-9]*$/"  nz-input placeholder="Escriba su número de cuenta" maxlength="11" minlength="11" />
+    </nz-input-group>
+    <ng-template #suffixButton>
+      <button nz-button nzType="primary" nzSize="large" nzSearch (click)="buscarDato()">Buscar</button>
+    </ng-template>
+  </div> 
+  <div class="tabla" *ngIf="exist">
+    
+    <nz-table #horasTable [nzData]="data_db" [nzFrontPagination]="false"
+    [nzShowPagination]="false" (nzCurrentPageDataChange)="onCurrentPageDataChange($event)">
+      <thead>
+        <tr >
+          <th *ngFor="let headers of encabezados_sin_guiones">{{headers}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of horasTable.data | filter:numCuenta">
+          <td *ngFor="let headers2 of encabezados" >{{ data[headers2] }}</td>
+        </tr>
+      </tbody>
+    </nz-table>
+
+  </div> 
+  <div class="grafico"> 5</div> 
+  <div class="datos"> 6</div> 
+</div> -->
