@@ -10,19 +10,21 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { EstudiantesComponent } from './pages/estudiantes/estudiantes.component';
 import { AccountComponent } from './pages/account/account.component';
 import { MisHorasComponent } from './pages/mis-horas/mis-horas.component';
+import { LandingComponent } from './pages/landing/landing.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/feed', pathMatch: 'full' },
-  { path: 'admin', component: DashboardComponent },
-  { path: 'admin/actividad', component: ActividadesComponent , data: { queryParams: ['view'] }},
-  { path: 'admin/estudiante', component: EstudiantesComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'feed', component: FeedComponent },
-  { path: 'account', component: AccountComponent },
-  { path: 'hours', component: MisHorasComponent },
-  { path: 'payments', component: MisHorasComponent },
-  { path: 'actividad_detail', component: ActividadDetailComponent, data: { queryParams: ['id'] }},
-  { path: 'error', component: HandleErrorComponent},
+  { path: '', redirectTo: '/welcome', pathMatch: 'full' },
+  { path: 'welcome', component: LandingComponent },
+  // { path: 'admin', component: DashboardComponent },
+  // { path: 'admin/actividad', component: ActividadesComponent , data: { queryParams: ['view'] }},
+  // { path: 'admin/estudiante', component: EstudiantesComponent },
+  // { path: 'login', component: LoginComponent },
+  // { path: 'feed', component: FeedComponent },
+  // { path: 'account', component: AccountComponent },
+  // { path: 'hours', component: MisHorasComponent },
+  // { path: 'payments', component: MisHorasComponent },
+  // { path: 'actividad_detail', component: ActividadDetailComponent, data: { queryParams: ['id'] }},
+  // { path: 'error', component: HandleErrorComponent},
   { path: '**', component: NotFoundComponent }
 ];
 
